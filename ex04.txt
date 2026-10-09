@@ -1,0 +1,26 @@
+
+CÁCH 1: THỰC HÀNH TRÊN POWERSHELL (WINDOWS)
+1. Lệnh thực thi:
+mkdir smart_farm
+cd smart_farm
+New-Item main.py, config.json, README.md
+2. Giải thích từng dòng lệnh:
+   - mkdir smart_farm: Tạo thư mục mới có tên là "smart_farm"
+   - cd smart_farm: Di chuyển thư mục làm việc hiện tại vào trong "smart_farm"
+   - New-Item main.py, config.json, README.md: Khởi tạo đồng thời 3 tệp tin trống tên là main.py, config.json và README.md
+3. Kiểm tra kết quả (Xác minh bước thực hiện thành công):
+   - Chạy lệnh: Get-ChildItem (hoặc lệnh viết tắt: ls hoặc dir)
+   - Kết quả thành công: Màn hình hiển thị danh sách gồm 3 tệp tin main.py, config.json, README.md nằm bên trong thư mục smart_farm
+
+CÁCH 2: THỰC HÀNH TRÊN LINUX / MAC (BASH / ZSH)
+1. Lệnh thực thi:
+mkdir smart_farm
+cd smart_farm
+touch main.py config.json README.md
+2. Giải thích từng dòng lệnh:
+   - mkdir smart_farm: Tạo thư mục "smart_farm".
+   - cd smart_farm: Chuyển hướng vị trí làm việc vào thư mục "smart_farm"
+   - touch main.py config.json README.md: Tạo 3 tệp tin trống cùng lúc (các tên tệp cách nhau bằng khoảng trắng)
+3. Kiểm tra kết quả (Xác minh bước thực hiện thành công):
+   - Chạy lệnh: ls -la
+   - Kết quả thành công: Danh sách các tệp main.py, config.json, README.md sẽ xuất hiện trong thư mục
