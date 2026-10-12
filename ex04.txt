@@ -1,26 +1,24 @@
+PHẦN 1: BẢNG SO SÁNH ABSOLUTE PATH VÀ RELATIVE PATH
 
-CÁCH 1: THỰC HÀNH TRÊN POWERSHELL (WINDOWS)
-1. Lệnh thực thi:
-mkdir smart_farm
-cd smart_farm
-New-Item main.py, config.json, README.md
-2. Giải thích từng dòng lệnh:
-   - mkdir smart_farm: Tạo thư mục mới có tên là "smart_farm"
-   - cd smart_farm: Di chuyển thư mục làm việc hiện tại vào trong "smart_farm"
-   - New-Item main.py, config.json, README.md: Khởi tạo đồng thời 3 tệp tin trống tên là main.py, config.json và README.md
-3. Kiểm tra kết quả (Xác minh bước thực hiện thành công):
-   - Chạy lệnh: Get-ChildItem (hoặc lệnh viết tắt: ls hoặc dir)
-   - Kết quả thành công: Màn hình hiển thị danh sách gồm 3 tệp tin main.py, config.json, README.md nằm bên trong thư mục smart_farm
++-----------------------+---------------------------------------+---------------------------------------+
+| Tiêu chí so sánh      | Absolute Path (Đường dẫn tuyệt đối)   | Relative Path (Đường dẫn tương đối)   |
++-----------------------+---------------------------------------+---------------------------------------+
+| Cú pháp ví dụ         | C:\Users\An-K26\FarmProject\data\logs.csv | ../data/logs.csv                  |
++-----------------------+---------------------------------------+---------------------------------------+
+| Độ dài đường dẫn      | Thường dài, phụ thuộc hoàn toàn vào  | Ngắn gọn, súc tích, chỉ định vị trí   |
+|                       | cấu trúc thư mục gốc của hệ điều hành.| dựa theo thư mục hiện tại chạy lệnh.  |
++-----------------------+---------------------------------------+---------------------------------------+
+| Tính di động          | Kém. Dễ bị lỗi khi đổi máy hoặc gửi   | Cao. Các tệp di chuyển đồng bộ cùng   |
+| (Portability)         | cho người khác do khác tên user.      | thư mục dự án, chạy tốt mọi nơi.     |
++-----------------------+---------------------------------------+---------------------------------------+
 
-CÁCH 2: THỰC HÀNH TRÊN LINUX / MAC (BASH / ZSH)
-1. Lệnh thực thi:
-mkdir smart_farm
-cd smart_farm
-touch main.py config.json README.md
-2. Giải thích từng dòng lệnh:
-   - mkdir smart_farm: Tạo thư mục "smart_farm".
-   - cd smart_farm: Chuyển hướng vị trí làm việc vào thư mục "smart_farm"
-   - touch main.py config.json README.md: Tạo 3 tệp tin trống cùng lúc (các tên tệp cách nhau bằng khoảng trắng)
-3. Kiểm tra kết quả (Xác minh bước thực hiện thành công):
-   - Chạy lệnh: ls -la
-   - Kết quả thành công: Danh sách các tệp main.py, config.json, README.md sẽ xuất hiện trong thư mục
+
+PHẦN 2: LỰA CHỌN GIẢI PHÁP TỐI ƯU VÀ Ý NGHĨA KÝ HIỆU ..
+
+1. Lựa chọn giải pháp tối ưu
+- Giải pháp được chọn: Sử dụng Relative Path (../data/logs.csv).
+- Lý do: Giúp mã nguồn có tính di động cao, không bị phụ thuộc vào tên người dùng hay ổ đĩa cụ thể của từng cá nhân, đảm bảo dự án chạy ổn định khi đồng bộ lên GitHub hoặc chia sẻ cho các thành viên khác trong nhóm.
+
+2. Ý nghĩa của ký hiệu .. trong đường dẫn
+- Ký hiệu .. (hai dấu chấm) đại diện cho thư mục cha (Parent Directory) — tức là thư mục nằm ở cấp cao hơn liền kề ngay phía trên thư mục hiện tại mà script đang thực thi.
+- Ví dụ: Nếu script Python đang nằm trong thư mục src/, thì đường dẫn ../data/logs.csv có nghĩa là: "Đi lùi ra thư mục gốc của dự án (thông qua ..), sau đó truy cập vào thư mục data để đọc tệp logs.csv".
